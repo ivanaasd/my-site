@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гарна кнопка</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.35), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(168, 85, 247, 0.3), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(34, 211, 238, 0.22), transparent 35%),
+        linear-gradient(135deg, #070b1a, #0f172a 45%, #030712 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.45;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    body::before {
+      background: #7c3aed;
+      top: -120px;
+      left: -100px;
+    }
+
+    body::after {
+      background: #06b6d4;
+      bottom: -140px;
+      right: -100px;
+      animation-delay: -5s;
+    }
+
+    .wrap {
+      position: relative;
+      padding: 28px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      z-index: 1;
+    }
+
+    .btn {
+      position: relative;
+      padding: 20px 54px;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      color: #ffffff;
+      border: none;
+      border-radius: 22px;
+      cursor: pointer;
+      overflow: hidden;
+      background: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4, #8b5cf6);
+      background-size: 300% 300%;
+      box-shadow:
+        0 18px 40px rgba(59, 130, 246, 0.3),
+        0 0 35px rgba(139, 92, 246, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      animation: gradient 6s ease infinite;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 24px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.15), rgba(255,255,255,0.7));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+      transform: skewX(-25deg);
+      transition: left 0.7s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow:
+        0 24px 55px rgba(59, 130, 246, 0.42),
+        0 0 50px rgba(139, 92, 246, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      filter: brightness(1.08);
+    }
+
+    .btn:hover::after {
+      left: 130%;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+      50% {
+        transform: translateY(30px) translateX(20px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <button class="btn">Натисни мене</button>
+  </div>
+</body>
+</html>
